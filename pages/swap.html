@@ -1,0 +1,259 @@
+<html>
+    <head>
+        <title>Swap</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <!--<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">-->
+            <img src="img/cicada.jpg">
+            <h4 class="title is-4">Cicada</h4>
+          </a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/">
+              Home
+            </a>
+
+            <a class="navbar-item" href="swap">
+              Swap
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+
+            <a class="navbar-item center">
+              <div id="wallet_address" class="box is-center"></div>
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div id="chain-dropdown" class = "dropdown">
+                <div class = "dropdown-trigger">
+                   <button class = "button" aria-haspopup = "true" aria-controls = "dropdown-menu">
+                      <span id="main-chain"></span>
+                      <span class = "icon is-small">
+                         <i class = "fa fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                   </button>
+                </div>
+                <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                   <div class = "dropdown-content">
+                      <a class = "dropdown-item" onclick="changeChain('0x1')">Ethereum</a>
+                      <a class = "dropdown-item" onclick="changeChain('0x38')">BSC</a>
+                   </div>
+                </div>
+              </div>
+              &nbsp;
+              <div class="buttons">
+                <button class="button is-primary" onclick="disconnect()">
+                  <strong>Disconnect</strong>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <br>
+      <div class="container">
+        <div class="notification is-primary">
+            <!--<div id="select-toeken-dropdown-2" class = "dropdown">
+                <div class = "dropdown-trigger">
+                   <button class = "button" aria-haspopup = "true" aria-controls = "dropdown-menu">
+                      <span>Select Coin</span>
+                      <span class = "icon is-small">
+                         <i class = "fa fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                   </button>
+                </div>
+                <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                   <div class = "dropdown-content">
+                      <a class = "dropdown-item" onclick="addToken('0x4b0f1812e5df2a09796481ff14017e6005508003')" style="color: black;">TWT</a>
+                   </div>
+                </div>
+            </div>-->
+            <!--<div class="columns is-multiline is-mobile">
+                <div class="column">
+                    <div id="coin-dropdown" class = "dropdown">
+                        <div class = "dropdown-trigger">
+                           <button class = "button" aria-haspopup = "true" aria-controls = "dropdown-menu">
+                              <span>Add coin</span>
+                              <span class = "icon is-small">
+                                 <i class = "fa fa-angle-down" aria-hidden="true"></i>
+                              </span>
+                           </button>
+                        </div>
+                        <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                           <div class = "dropdown-content">
+                              <a class = "dropdown-item" onclick="addToken('0x4b0f1812e5df2a09796481ff14017e6005508003')" style="color: black;">TWT</a>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="control">
+                      <div class="select">
+                        <select>
+                          <option>Select coin</option>
+                          <option>TWT</option>
+                        </select>
+                      </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="control">
+                        <div class="select">
+                          <select>
+                            <option>Select coin</option>
+                            <option>With options</option>
+                          </select>
+                        </div>
+                      </div>
+                </div>
+            </div>
+          <div class="buttons">
+            <button id="swap-btn" class="button is-info">Swap</button> 
+          </div>
+        </div>
+      </div>-->
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            <div id="coin-dropdown" class = "dropdown">
+                <div class = "dropdown-trigger">
+                   <button class = "button" aria-haspopup = "true" aria-controls = "dropdown-menu">
+                      <span>Add coin</span>
+                      <span class = "icon is-small">
+                         <i class = "fa fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                   </button>
+                </div>
+                <div class = "dropdown-menu" id = "dropdown-menu" role = "menu">
+                   <div class = "dropdown-content">
+                      <a class = "dropdown-item" onclick="addToken('0x4b0f1812e5df2a09796481ff14017e6005508003')" style="color: black;">TWT</a>
+                   </div>
+                </div>
+            </div>
+        </p>
+      </div>
+      <div class="field">
+        <div class="field has-addons has-addons-centered">
+            <p class="control">
+                <div class="select">
+                  <select>
+                    <option>Select coin</option>
+                    <option>TWT</option>
+                  </select>
+                </div>
+            </p>
+            <p class="control">
+                <input class="input" type="text" placeholder="Amount">
+            </p>
+        </div>
+      </div>
+      <div class="field">
+        <div class="field has-addons has-addons-centered">
+            <p class="control">
+                <div class="select">
+                  <select>
+                    <option>Select coin</option>
+                    <option>TWT</option>
+                  </select>
+                </div>
+            </p>
+            <p class="control">
+                <input class="input" type="text" placeholder="Amount">
+            </p>
+        </div>
+      </div>
+      <div class="field">
+        <p class="control">
+            <div class="buttons">
+                <button id="swap-btn" class="button is-info" onclick="make_transaction()">Swap</button> 
+            </div>
+        </p>
+      </div>
+
+<script>
+  //DOMContentLoaded - it fires when initial HTML document has been completely loaded
+  document.addEventListener('DOMContentLoaded', function () {
+  // querySelector - it returns the element within the document that matches the specified selector
+  // var dropdown = document.querySelector('.dropdown');
+  var dropdown = document.getElementById("chain-dropdown");
+
+  //addEventListener - attaches an event handler to the specified element.
+  dropdown.addEventListener('click', function(event) {
+  //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
+  event.stopPropagation();
+
+  //classList.toggle - it toggles between adding and removing a class name from an element
+  dropdown.classList.toggle('is-active');
+  });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+  // querySelector - it returns the element within the document that matches the specified selector
+  // var dropdown = document.querySelector('.dropdown');
+  var dropdown = document.getElementById("coin-dropdown");
+
+  //addEventListener - attaches an event handler to the specified element.
+  dropdown.addEventListener('click', function(event) {
+  //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
+  event.stopPropagation();
+
+  //classList.toggle - it toggles between adding and removing a class name from an element
+  dropdown.classList.toggle('is-active');
+  });
+  });
+
+  async function setChainId(){
+    var network = null;
+    const chainId = await ethereum.request({ method: 'eth_chainId' });
+    var networkTag = document.getElementById("main-chain");
+    if (chainId == "0x1"){
+      network = "Ethereum";
+    }else if (chainId == "0x38"){
+      network = "BSC"
+    }
+    networkTag.innerHTML = network;
+  }
+
+  function setWalletAddress(){
+    var wallet_address = localStorage.getItem("wallet_address");
+    var walletAddressNavBar = document.getElementById("wallet_address");
+    walletAddressNavBar.innerHTML = wallet_address;
+  }
+  setWalletAddress();
+  setChainId();
+</script>
+<script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js"></script>
+<script src = "https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
